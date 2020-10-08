@@ -20,3 +20,17 @@ library(dplyr)
 
 Høyde og Inntekt
 
+## Introduction
+
+It has been claimed that the height of a person is one of the most deciding factors for the persons income. In this short paper we will investigate this assertion by using a dataset from the _National Longitudinal Study_ (U.S. Bureau of Labor Statistics). See `help(heights, package = modelr)`for details.
+
+## Summary statistics
+
+We start by grouping the heights in 8 intervals and report summary statistics.
+
+```{r}
+heights$heightInt <-cut(heights$height, breaks = 8)
+kable(summary(heights[,1:4]))
+kable(summary(heights[,5:9]))
+```
+
