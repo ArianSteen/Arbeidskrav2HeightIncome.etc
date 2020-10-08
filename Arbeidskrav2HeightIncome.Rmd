@@ -1,0 +1,22 @@
+---
+title: "Height Income, Arbeidskrav 2 MSB104"
+author: "Anne Grete Lilleland, Arian Steen"
+date: "8 10 2020"
+output: html_document
+---
+
+```{r}
+library(citr)
+library(tinytex)
+library(knitr)
+library(ggplot2)
+library(tidyverse)
+library(modelr)
+library(ggpubr)
+library(dplyr)
+```
+
+## Høyde & Inntekt
+
+Høyde og Inntekt
+
