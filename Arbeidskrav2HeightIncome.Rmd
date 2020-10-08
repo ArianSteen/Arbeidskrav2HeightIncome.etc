@@ -33,4 +33,4 @@ heights$heightInt <-cut(heights$height, breaks = 8)
 kable(summary(heights[,1:4]))
 kable(summary(heights[,5:9]))
 ```
-ds
+
