@@ -34,3 +34,4 @@ kable(summary(heights[,1:4]))
 kable(summary(heights[,5:9]))
 ```
 
+
