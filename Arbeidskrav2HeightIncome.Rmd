@@ -3,7 +3,7 @@ title: "**Inntekt og Høyde**"
 author:
 - Arian Steen
 - Anne Grete Lilleland
-date: "13 10 2020"
+date: "12 10 2020"
 output:
   pdf_document: default
   html_document: default
@@ -81,3 +81,52 @@ Vi legger til grunn for at Spearman og Pearson koeffisient metoden ikke er den m
 # Scatterplot 
 
 Vi begynner med et scatterplot. Et spredningsplot vil vise verdien av to variabler i et datasett, vi vil visualisere hvor mye den ene variablen (høyde) vil påvirke den andre variablen (inntekt), Dette er spearman korrelasjonen visualisert grafisk.
+
+```{r include=FALSE}
+
+library(ggplot2)
+attach(heights)
+cor.test(heights$income,heights$height, method = "spearman")
+
+Graph1 = ggplot(heights,
+                aes(x=height,
+                    y=income))
+Graph1+
+  geom_point(size = 3,
+             shape = 21,
+             color = "#002344",
+             fill = "#FECB00")+
+  labs(x = "Høyde",
+       y = "Inntekt")+
+  theme_bw()
+
+```
+
+```{r echo=FALSE}
+Graph1 = ggplot(heights,
+                aes(x=height,
+                    y=income))
+Graph1+
+  geom_point(size = 3,
+             shape = 21,
+             color = "#002344",
+             fill = "#FECB00")+
+  labs(x = "Høyde",
+       y = "Inntekt")+
+  theme_bw()
+```
+
+# Histogram og Density plot
+
+Et histogram er en grafisk framstilling, som brukes til å analysere og presentere data, Høyden av en søyle er frekvensen delt på klassebredden. Vi skal bruke et histogram til å analysere våre ulike variabler. Samt trekke en konklusjon basert på funnet. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+attach(heights)
+hist(income,  breaks = 5, main = "Histogram av Høyde,Inntekt", xlab = "Inntekt,Frekvens", col = "#FECB00")
+```
+
+Konklusjonen er at de aller fleste observasjoner, ligger trukket sammen uten en klar sammenheng. Vi ser også at det finnes noen få "outliers" i vårt datasett. Vi kan ikke trekke en klar konklusjon om at Høyde påvirker inntekt i noen særlig grad.
+
+# Densityplot,
+
+Densityplot viser oss distribusjonen av numeriske variabler, vi bruker den i denne sammenheng for å se hvordan distribusjonen er i vårt datasett med tanke på Inntekt og Høyde. 
