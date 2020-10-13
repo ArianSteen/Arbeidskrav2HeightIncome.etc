@@ -5,8 +5,8 @@ author:
 - Anne Grete Lilleland
 date: "12 10 2020"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 subtitle: "*Tjener høye mennesker mer?*"
 ---
 ```{r include=FALSE}
@@ -65,13 +65,16 @@ kable(summary(heights[,1:7]))
 
 # Pearson korrelasjonskoeffisient
 Pearson korrelasjonskoeffisient måler, samvariasjonen mellom to variabler ved å dele variablenes kovarians på produktet av variablens respektive standardavvik. Rho har verdi mellom +1 og -1. En verdi på +1 er fullstendig positiv lineær korrelasjon, 0 er ingen lineær korrelasjon, og -1 er fullstendig negativ korrelasjon.
+
 ```{r echo=FALSE}
 attach(heights)
 cor.test(heights$income,heights$height, method = "pearson")
 ```
 
 **Siden Rho har en verdi på 0.217 er det ikke en klar positiv lineær korrelasjon mellom inntekt og høyde**
+
 # Spearman's rank korrelasjonskoeffisient
+
 ```{r echo=FALSE}
 attach(heights)
 cor.test(heights$income,heights$height, method = "spearman")
@@ -79,7 +82,29 @@ cor.test(heights$income,heights$height, method = "spearman")
 ```
 **Her har vi også en veldig svak korrelasjon mellom inntekt og høyde, verdien ligger på 0.210.** 
 
-Vi legger til grunn for at Spearman og Pearson koeffisient metoden ikke er den mest nøyaktige måten man kan analysere sammenhengen mellom inntekt og høyde. 
+# Pearson korrelasjon 
+Mellom Inntekt og Utdanning
+
+```{r echo=FALSE}
+attach(heights)
+cor.test(heights$income,heights$education, method = "pearson")
+```
+
+# Spearman Korrelasjon
+Mellom Inntekt og Utdanning
+
+```{r echo=FALSE}
+attach(heights)
+cor.test(heights$income,heights$education, method = "spearman")
+
+```
+
+# Konklusjon Pearson og Spearman
+Korrelasjonen mellom høyde og inntekt er ikke klar ifølge Pearson testen fikk vi en verdi på 0.217, ifølge Spearman testen fikk vi en rho på 0.210. 
+
+Derimot finnes det en korrelasjon mellom utdanning og inntekt, ifølge Pearson testen fikk vi en verdi på *0.393* Ifølge Spearman testen fikk en *rho på 0.406* dette er en klar korrelasjon
+
+Vi legger til grunn for at Spearman og Pearson koeffisient metoden ikke er den mest nøyaktige måten man kan analysere sammenhengen mellom inntekt og høyde, men det er fortsatt interresant på bakgrunn av klare tall.
 
 # Scatterplot 
 
@@ -115,6 +140,22 @@ Graph1+
              color = "#002344",
              fill = "#FECB00")+
   labs(x = "Høyde",
+       y = "Inntekt")+
+  theme_bw()
+```
+
+# Scatterplot mellom Inntekt og Utdanning
+
+```{r echo=FALSE}
+Graph1 = ggplot(heights,
+                aes(x=education,
+                    y=income))
+Graph1+
+  geom_point(size = 2,
+             shape = 21,
+             color = "#002344",
+             fill = "#FECB00")+
+  labs(x = "Utdanning",
        y = "Inntekt")+
   theme_bw()
 ```
