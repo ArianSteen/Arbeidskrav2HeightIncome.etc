@@ -1,10 +1,13 @@
 ---
-title: "Untitled"
-author: "Anne Grete Lilleland, Arian Steen"
-date: "12 10 2020"
+title: "**Inntekt og Høyde**"
+author:
+- Arian Steen
+- Anne Grete Lilleland
+date: "13 10 2020"
 output:
   pdf_document: default
   html_document: default
+subtitle: "*Tjener høye mennesker mer?*"
 ---
 ```{r}
 library(citr)
@@ -17,31 +20,36 @@ library(ggpubr)
 library(dplyr)
 ```
 
-## Introduction
-
-
-Det er hevdet at høye personer tjener mer i snitt en personer som er lavere, at høyde er en avgjørende faktor for hvor mye lønn en person tjener i snitt. I denne korte rapporten vil vi gå gjennom ulige datasett hentet fra det Amerikanske byrået for statistikk. (U.S Bureau of Labor). Disse tallene kommer fra pakken 'modelr-heights'. 
-
-##
-Vi skal utføre ulike tester på datasettet. 
-
-
-
-## Summary statistics
-
-We start by grouping the heights in 8 intervals and report summary statistics.
-
-```{r}
-heights$heightInt <-cut(heights$height, breaks = 8)
-kable(summary(heights[,1:4]))
-kable(summary(heights[,5:9]))
+```{r include=FALSE}
+data(heights)
 ```
 
+# Har høyde noe å si for inntekt, lønn eller bonuser?
 
-##How much do we earn extra per inch
+Det er ofte snakket om at ulike attributter har mye å si for en persons karriere,liv og generell livskvalitet. Et av de tingene vi ofte hører er at høye mennesker vil i snitt tjene mer. Vi skal i denne analysen se nærmere på utsagnet "Din høyde har betydning for hvor mye du kan tjene". Vi har installert pakken 'modelr' og skal gå gjennom datasettet 'heights', dette er data som er hentet fra 'Nation longitudinal study' i USA, som er sponset av det amerikanske Bureau of Labour Statistics, som kan sammenlignes med Norges Statistisk Sentralbyrå.
 
+# Ulike variabler som er inkludert i analysen
 
+Datasettet vi har brukt inkluderer variablene: 
 
+ * Høyde
+ * Inntekt
+ * Kjønn
+ * Vekt
+ * Sivilstatus
+ * Alder
+ * Utdanning
 
+Vi gjør oppmerksom på at dette datasettet ikke inkluderer etnisitet, familiens formue eller hvor de utvalgte bor.Datasettet er tatt fra det amerikanske arbeidsmarkedet, det må tas hensyn til dette dersom vi skal bruke dette datasettet som et utgangspunk for andre land og verdensdeler. Analysen vil dermed se på hvordan høyde korrelerer med inntekt når det gjelder det amerikanske arbeidsmarkedet. 
 
+# Ulike analyse metoder og verktøy brukt
 
+Vi har brukt ulike typer analyser for å tolke datasettet. Dette er gjort for å få kunne tolke datasettet grundigere, de ulike typene analysene vi har brukt inkluderer:
+
+ * Pearson korrelasjonskoeffisient
+ * Spearman's rank korrelasjonskoeffisient
+ * Histogram distribusjon og Density funksjon
+ * Korrelasjon matrise/Scatterplot
+ * Korrelasjons test, to variabler
+ * Korrelasjon og Regresjonsanalyse
+ * Økonometrisk modell
