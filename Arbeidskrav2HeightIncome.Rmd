@@ -5,8 +5,8 @@ author:
 - Anne Grete Lilleland
 date: "12 10 2020"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 subtitle: "*Tjener høye mennesker mer?*"
 ---
 ```{r include=FALSE}
