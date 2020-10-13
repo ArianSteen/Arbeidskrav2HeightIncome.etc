@@ -5,8 +5,8 @@ author:
 - Anne Grete Lilleland
 date: "12 10 2020"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 subtitle: "*Tjener høye mennesker mer?*"
 ---
 ```{r include=FALSE}
@@ -52,10 +52,8 @@ Vi har brukt ulike typer analyser for å tolke datasettet. Dette er gjort for å
  * Pearson korrelasjonskoeffisient
  * Spearman's rank korrelasjonskoeffisient
  * Histogram distribusjon og Density funksjon
- * Korrelasjon matrise/Matrixplot
  * Korrelasjons test, to variabler
- * Korrelasjon og Regresjonsanalyse
- * Økonometrisk modell
+ * Korrelasjon modell
  
 ### Oppsumering av ulike variabler i datasettet
 ```{r echo=FALSE}
@@ -195,13 +193,25 @@ Heightvariable$marital<-as.numeric(Heightvariable$marital)
 Heightvariable$sex<-as.numeric(Heightvariable$sex)
 Heightvariable$education<-as.numeric(Heightvariable$education)
 
+M = cor(Heightvariable[,1:7])
+K = cor(Heightvariable[,1:4])
+
+corrplot(cor(M))
+
 ```
 
 
+# Konklusjon
 
-# 2 grafs-plot
+```{r echo=FALSE}
+
+mean(height)
+mean(income)
+cor(heights$income,heights$height)
+```
+Med tanke på at datasettet gir oss en veldig svak korrelasjon , rho ligger på rundt 0.20 kan vi med sikkerhet si at det ikke er noe særlig korrelasjon mellom høyde og inntekt, vi anbefaler videre forskning innenfor feltet 'ulike attributer og effekt på livskvalitet' gjerne inkluderende flere ulike variabler som f.eks etnisitet og lokasjon. Vi konkluderer med at du tjener 41.200 dollar dersom du er 170, dette inkluderer både menn og kvinner. 
 
 
-# Line chart, linje chart
+
 
 
