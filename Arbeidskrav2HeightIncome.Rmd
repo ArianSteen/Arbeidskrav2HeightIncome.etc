@@ -18,6 +18,9 @@ library(tidyverse)
 library(modelr)
 library(ggpubr)
 library(dplyr)
+library(corrplot)
+library(RColorBrewer)
+library(kableExtra)
 ```
 
 ```{r include=FALSE}
@@ -80,7 +83,7 @@ Vi legger til grunn for at Spearman og Pearson koeffisient metoden ikke er den m
 
 # Scatterplot 
 
-Vi begynner med et scatterplot. Et spredningsplot vil vise verdien av to variabler i et datasett, vi vil visualisere hvor mye den ene variablen (høyde) vil påvirke den andre variablen (inntekt), Dette er spearman korrelasjonen visualisert grafisk.
+Vi begynner med et scatterplot. Et spredningsplot vil vise verdien av to variabler i et datasett, vi vil visualisere hvor mye den ene variablen (høyde) vil påvirke den andre variablen (inntekt), Dette er spearman korrelasjonen visualisert grafisk. Man kan se at det ikke er noen sterk sammenheng mellom høyde og inntekt, utenom noen få outliers.
 
 ```{r include=FALSE}
 
@@ -116,6 +119,10 @@ Graph1+
   theme_bw()
 ```
 
+# Regresjonslinje og scatterplot
+
+
+
 # Histogram og Density plot
 
 Et histogram er en grafisk framstilling, som brukes til å analysere og presentere data, Høyden av en søyle er frekvensen delt på klassebredden. Vi skal bruke et histogram til å analysere våre ulike variabler. Samt trekke en konklusjon basert på funnet. 
@@ -127,6 +134,13 @@ hist(income,  breaks = 5, main = "Histogram av Høyde,Inntekt", xlab = "Inntekt,
 
 Konklusjonen er at de aller fleste observasjoner, ligger trukket sammen uten en klar sammenheng. Vi ser også at det finnes noen få "outliers" i vårt datasett. Vi kan ikke trekke en klar konklusjon om at Høyde påvirker inntekt i noen særlig grad.
 
-# Densityplot,
+# Densityplot og 2 grafs-plot
 
 Densityplot viser oss distribusjonen av numeriske variabler, vi bruker den i denne sammenheng for å se hvordan distribusjonen er i vårt datasett med tanke på Inntekt og Høyde. 
+
+# 2 grafs-plot
+
+
+# Line chart, linje chart
+
+
