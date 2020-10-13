@@ -9,7 +9,7 @@ output:
   html_document: default
 subtitle: "*Tjener høye mennesker mer?*"
 ---
-```{r}
+```{r include=FALSE}
 library(citr)
 library(tinytex)
 library(knitr)
@@ -53,3 +53,31 @@ Vi har brukt ulike typer analyser for å tolke datasettet. Dette er gjort for å
  * Korrelasjons test, to variabler
  * Korrelasjon og Regresjonsanalyse
  * Økonometrisk modell
+ 
+### Oppsumering av ulike variabler i datasettet
+```{r echo=FALSE}
+heights$heightInt<- cut(heights$height, breaks=8)
+kable(summary(heights[,1:7]))
+```
+
+# Pearson korrelasjonskoeffisient
+Pearson korrelasjonskoeffisient måler, samvariasjonen mellom to variabler ved å dele variablenes kovarians på produktet av variablens respektive standardavvik. Rho har verdi mellom +1 og -1. En verdi på +1 er fullstendig positiv lineær korrelasjon, 0 er ingen lineær korrelasjon, og -1 er fullstendig negativ korrelasjon.
+```{r echo=FALSE}
+attach(heights)
+cor.test(heights$income,heights$height, method = "pearson")
+```
+
+**Siden Rho har en verdi på 0.217 er det ikke en klar positiv lineær korrelasjon mellom inntekt og høyde**
+# Spearman's rank korrelasjonskoeffisient
+```{r echo=FALSE}
+attach(heights)
+cor.test(heights$income,heights$height, method = "spearman")
+
+```
+**Her har vi også en veldig svak korrelasjon mellom inntekt og høyde, verdien ligger på 0.210.** 
+
+Vi legger til grunn for at Spearman og Pearson koeffisient metoden ikke er den mest nøyaktige måten man kan analysere sammenhengen mellom inntekt og høyde. 
+
+# Scatterplot 
+
+Vi begynner med et scatterplot. Et spredningsplot vil vise verdien av to variabler i et datasett, vi vil visualisere hvor mye den ene variablen (høyde) vil påvirke den andre variablen (inntekt), Dette er spearman korrelasjonen visualisert grafisk.
