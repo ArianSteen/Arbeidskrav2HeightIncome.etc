@@ -52,7 +52,7 @@ Vi har brukt ulike typer analyser for å tolke datasettet. Dette er gjort for å
  * Pearson korrelasjonskoeffisient
  * Spearman's rank korrelasjonskoeffisient
  * Histogram distribusjon og Density funksjon
- * Korrelasjon matrise/Scatterplot
+ * Korrelasjon matrise/Matrixplot
  * Korrelasjons test, to variabler
  * Korrelasjon og Regresjonsanalyse
  * Økonometrisk modell
@@ -159,6 +159,7 @@ Graph1+
        y = "Inntekt")+
   theme_bw()
 ```
+Vi kan se at utdanning er positivt korrelert med inntekt, det vil si at du tjener mer dersom du har høyere utdanning. Dette kan sammenlignes med høyde hvor korrelasjonen ikke er like positiv. Legg også merke til outliers på toppen av grafen. 
 
 # Regresjonslinje og scatterplot
 
@@ -168,6 +169,8 @@ Graph1+
 
 Et histogram er en grafisk framstilling, som brukes til å analysere og presentere data, Høyden av en søyle er frekvensen delt på klassebredden. Vi skal bruke et histogram til å analysere våre ulike variabler. Samt trekke en konklusjon basert på funnet. 
 
+Densityplot viser oss distribusjonen av numeriske variabler, vi bruker den i denne sammenheng for å se hvordan distribusjonen er i vårt datasett med tanke på Inntekt og Høyde. 
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 attach(heights)
 hist(income,  breaks = 5, main = "Histogram av Høyde,Inntekt", xlab = "Inntekt,Frekvens", col = "#FECB00")
@@ -175,9 +178,26 @@ hist(income,  breaks = 5, main = "Histogram av Høyde,Inntekt", xlab = "Inntekt,
 
 Konklusjonen er at de aller fleste observasjoner, ligger trukket sammen uten en klar sammenheng. Vi ser også at det finnes noen få "outliers" i vårt datasett. Vi kan ikke trekke en klar konklusjon om at Høyde påvirker inntekt i noen særlig grad.
 
-# Densityplot og 2 grafs-plot
+# Matrise/Matrixplot og korrelasjon mellom Inntekt og Høyde
 
-Densityplot viser oss distribusjonen av numeriske variabler, vi bruker den i denne sammenheng for å se hvordan distribusjonen er i vårt datasett med tanke på Inntekt og Høyde. 
+```{r echo=FALSE}
+# Inntekt og Høyde
+cor(heights$income,heights$height)
+```
+En enkel korrelasjonstest av datasettet viser oss at korrelasjonen er 0.2177, med andre ord ikke så høy korrelasjon. Vi lager et korrelasjonsplot illustrert grafisk og inkludert samtlige av de syv variablene ved hjelp av pakkene corrplot og ggplot vist nedenfor.
+
+```{r echo=FALSE}
+Heightvariable <- heights[1:7]
+Heightvariable$income<-as.numeric(Heightvariable$income)
+Heightvariable$weight<-as.numeric(Heightvariable$weight)
+Heightvariable$age<-as.numeric(Heightvariable$age)
+Heightvariable$marital<-as.numeric(Heightvariable$marital)
+Heightvariable$sex<-as.numeric(Heightvariable$sex)
+Heightvariable$education<-as.numeric(Heightvariable$education)
+
+```
+
+
 
 # 2 grafs-plot
 
