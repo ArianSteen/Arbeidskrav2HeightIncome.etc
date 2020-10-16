@@ -1,0 +1,22 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Hei!
+
+Fin og ryddig oppgave. Gjennomgående godt fargefalg og visuelt fine scatterplot. Grenene er fjernet til slutt, så det er et pluss. Er også et pluss at dere nevner variabler som ikke er med i analysen, som kan ha betydning for tolkningen av resultatene dersom en ser på andre land etc.
+
+Ser likevel at dere nærmest kun ser på korrelasjon og at det mangler enkelte momenter som skulle være med i oppgaven. Viser til oppgaveteksten til Arnstein:
+
+" Viktige moment:
+
+1) Én variabel analyse: histogram, density plot og box-plot. Også deskriptiv statistikk for variablene slik som mean, median, sd etc. Ser variablene ut til å være normal-fordelte eller kan en transformasjon være på sin plass? Hvor kommer de svarte prikkene på rekke øverst i geom_point plottet fra?
+
+2) To variabler analyse: geom_point(), geom_jitter(), geom_smooth() etc., event. mer enn to variabler hvis det kan øke innsikten (bind til farge, form, størrelse eller alpha alt etter hva som har størst informasjonsverdi). Kan bruk av facets gi mer innsikt? "
+
+Selv om dere ser på korrelasjon så savner vi også en graf med regresjonslinje for å fremstille sammenhengen mellom variablene, i tillegg til en graf som fremstiller flere variabler samtidig (se punkt 2 over). Kan også nevne at vi ikke fikk opp noe i matrise-plottet da vi knittet, selv om dette sikkert ga fornuftige resultater da dere jobbet med oppgaven. Prøvde også å kjøre koden for seg selv i R, men dette gikk ikke. 
+
+Ha en ellers fin helg!
+
+Ørjan og John-Atle

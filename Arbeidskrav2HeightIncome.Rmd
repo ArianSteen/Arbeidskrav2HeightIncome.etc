@@ -8,8 +8,11 @@ output:
   html_document: default
   pdf_document: default
 subtitle: "*Tjener høye mennesker mer?*"
+
 ---
 ```{r include=FALSE}
+# Kan være lurt å ha med kommandoen under da dette gir hele tall visuelt og ikke "scientific notation". 
+options(scipen=999) 
 library(citr)
 library(tinytex)
 library(knitr)
