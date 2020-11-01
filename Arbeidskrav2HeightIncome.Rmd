@@ -46,7 +46,9 @@ Datasettet vi har brukt inkluderer variablene:
  * Alder
  * Utdanning
 
-Vi gjør oppmerksom på at dette datasettet ikke inkluderer etnisitet, familiens formue eller hvor de utvalgte bor.Datasettet er tatt fra det amerikanske arbeidsmarkedet, det må tas hensyn til dette dersom vi skal bruke dette datasettet som et utgangspunk for andre land og verdensdeler. Analysen vil dermed se på hvordan høyde korrelerer med inntekt når det gjelder det amerikanske arbeidsmarkedet. 
+Vi gjør oppmerksom på at dette datasettet ikke inkluderer etnisitet, familiens formue eller hvor de utvalgte bor. 
+Datasettet er tatt fra det amerikanske arbeidsmarkedet, det må tas hensyn til dette dersom vi skal bruke dette datasettet som et utgangspunk for andre land og verdensdeler. 
+Analysen vil dermed se på hvordan høyde korrelerer med inntekt når det gjelder det amerikanske arbeidsmarkedet. 
 
 # Ulike analyse metoder og verktøy brukt
 
@@ -65,23 +67,26 @@ kable(summary(heights[,1:7]))
 ```
 
 # Pearson korrelasjonskoeffisient
-Pearson korrelasjonskoeffisient måler, samvariasjonen mellom to variabler ved å dele variablenes kovarians på produktet av variablens respektive standardavvik. Rho har verdi mellom +1 og -1. En verdi på +1 er fullstendig positiv lineær korrelasjon, 0 er ingen lineær korrelasjon, og -1 er fullstendig negativ korrelasjon.
+
+Pearson korrelasjonskoeffisient måler, samvariasjonen mellom to variabler ved å dele variablenes kovarians på produktet av variablens respektive standardavvik. 
+Rho har verdi mellom +1 og -1. 
+En verdi på +1 er fullstendig positiv lineær korrelasjon, 0 er ingen lineær korrelasjon, og -1 er fullstendig negativ korrelasjon.
 
 ```{r echo=FALSE}
 attach(heights)
 cor.test(heights$income,heights$height, method = "pearson")
 ```
 
-**Siden Rho har en verdi på 0.217 er det ikke en klar positiv lineær korrelasjon mellom inntekt og høyde**
+Siden Rho har en verdi på 0.217 er det ikke en klar positiv lineær korrelasjon mellom inntekt og høyde
 
 # Spearman's rank korrelasjonskoeffisient
 
 ```{r echo=FALSE}
 attach(heights)
 cor.test(heights$income,heights$height, method = "spearman")
-
 ```
-**Her har vi også en veldig svak korrelasjon mellom inntekt og høyde, verdien ligger på 0.210.** 
+
+Her har vi også en veldig svak korrelasjon mellom inntekt og høyde, verdien ligger på 0.210. 
 
 # Pearson korrelasjon 
 Mellom Inntekt og Utdanning
@@ -97,22 +102,25 @@ Mellom Inntekt og Utdanning
 ```{r echo=FALSE}
 attach(heights)
 cor.test(heights$income,heights$education, method = "spearman")
-
 ```
 
 # Konklusjon Pearson og Spearman
+
 Korrelasjonen mellom høyde og inntekt er ikke klar ifølge Pearson testen fikk vi en verdi på 0.217, ifølge Spearman testen fikk vi en rho på 0.210. 
 
-Derimot finnes det en korrelasjon mellom utdanning og inntekt, ifølge Pearson testen fikk vi en verdi på *0.393* Ifølge Spearman testen fikk en *rho på 0.406* dette er en klar korrelasjon
+Derimot finnes det en korrelasjon mellom utdanning og inntekt, ifølge Pearson testen fikk vi en verdi på *0.393*. 
+Ifølge Spearman testen fikk en *rho på 0.406* dette er en klar korrelasjon
 
-Vi legger til grunn for at Spearman og Pearson koeffisient metoden ikke er den mest nøyaktige måten man kan analysere sammenhengen mellom inntekt og høyde, men det er fortsatt interresant på bakgrunn av klare tall.
+Vi legger til grunn for at Spearman og Pearson koeffisient metoden ikke er den mest nøyaktige måten man kan analysere sammenhengen mellom inntekt og høyde, men det er fortsatt interessant på bakgrunn av klare tall.
 
 # Scatterplot 
 
-Vi begynner med et scatterplot. Et spredningsplot vil vise verdien av to variabler i et datasett, vi vil visualisere hvor mye den ene variablen (høyde) vil påvirke den andre variablen (inntekt), Dette er spearman korrelasjonen visualisert grafisk. Man kan se at det ikke er noen sterk sammenheng mellom høyde og inntekt, utenom noen få outliers.
+Vi begynner med et scatterplot. 
+Et spredningsplot vil vise verdien av to variabler i et datasett, vi vil visualisere hvor mye den ene variablen (høyde) vil påvirke den andre variablen (inntekt). 
+Dette er spearman korrelasjonen visualisert grafisk. 
+Man kan se at det ikke er noen sterk sammenheng mellom høyde og inntekt, utenom noen få outliers.
 
 ```{r include=FALSE}
-
 library(ggplot2)
 attach(heights)
 cor.test(heights$income,heights$height, method = "spearman")
@@ -128,7 +136,6 @@ Graph1+
   labs(x = "Høyde",
        y = "Inntekt")+
   theme_bw()
-
 ```
 
 ```{r echo=FALSE}
@@ -160,15 +167,19 @@ Graph1+
        y = "Inntekt")+
   theme_bw()
 ```
-Vi kan se at utdanning er positivt korrelert med inntekt, det vil si at du tjener mer dersom du har høyere utdanning. Dette kan sammenlignes med høyde hvor korrelasjonen ikke er like positiv. Legg også merke til outliers på toppen av grafen. 
+
+Vi kan se at utdanning er positivt korrelert med inntekt, det vil si at du tjener mer dersom du har høyere utdanning. 
+Dette kan sammenlignes med høyde hvor korrelasjonen ikke er like positiv. 
+Legg også merke til outliers på toppen av grafen. 
 
 # Regresjonslinje og scatterplot
 
-
-
 # Histogram og Density plot
 
-Et histogram er en grafisk framstilling, som brukes til å analysere og presentere data, Høyden av en søyle er frekvensen delt på klassebredden. Vi skal bruke et histogram til å analysere våre ulike variabler. Samt trekke en konklusjon basert på funnet. 
+Et histogram er en grafisk framstilling, som brukes til å analysere og presentere data. 
+Høyden av en søyle er frekvensen delt på klassebredden. 
+Vi skal bruke et histogram til å analysere våre ulike variabler. 
+Samt trekke en konklusjon basert på funnet. 
 
 Densityplot viser oss distribusjonen av numeriske variabler, vi bruker den i denne sammenheng for å se hvordan distribusjonen er i vårt datasett med tanke på Inntekt og Høyde. 
 
@@ -177,7 +188,9 @@ attach(heights)
 hist(income,  breaks = 5, main = "Histogram av Høyde,Inntekt", xlab = "Inntekt,Frekvens", col = "#FECB00")
 ```
 
-Konklusjonen er at de aller fleste observasjoner, ligger trukket sammen uten en klar sammenheng. Vi ser også at det finnes noen få "outliers" i vårt datasett. Vi kan ikke trekke en klar konklusjon om at Høyde påvirker inntekt i noen særlig grad.
+Konklusjonen er at de aller fleste observasjoner, ligger trukket sammen uten en klar sammenheng. 
+Vi ser også at det finnes noen få "outliers" i vårt datasett.
+Vi kan ikke trekke en klar konklusjon om at Høyde påvirker inntekt i noen særlig grad.
 
 # Matrise/Matrixplot og korrelasjon mellom Inntekt og Høyde
 
@@ -188,6 +201,9 @@ cor(heights$income,heights$height)
 En enkel korrelasjonstest av datasettet viser oss at korrelasjonen er 0.2177, med andre ord ikke så høy korrelasjon. Vi lager et korrelasjonsplot illustrert grafisk og inkludert samtlige av de syv variablene ved hjelp av pakkene corrplot og ggplot vist nedenfor.
 
 ```{r echo=FALSE}
+# Dere trenger ikke lage Heightvariable her. Bare tøm 
+# heights inn i pipe og så konverter variablene når 
+# det trengs (og om det i det hele tatt trengs)
 Heightvariable <- heights[1:7]
 Heightvariable$income<-as.numeric(Heightvariable$income)
 Heightvariable$weight<-as.numeric(Heightvariable$weight)
@@ -200,9 +216,7 @@ M = cor(Heightvariable[,1:7])
 K = cor(Heightvariable[,1:4])
 
 corrplot(cor(M))
-
 ```
-
 
 # Konklusjon
 
@@ -213,8 +227,3 @@ mean(income)
 cor(heights$income,heights$height)
 ```
 Med tanke på at datasettet gir oss en veldig svak korrelasjon , rho ligger på rundt 0.20 kan vi med sikkerhet si at det ikke er noe særlig korrelasjon mellom høyde og inntekt, vi anbefaler videre forskning innenfor feltet 'ulike attributer og effekt på livskvalitet' gjerne inkluderende flere ulike variabler som f.eks etnisitet og lokasjon. Vi konkluderer med at du tjener 41.200 dollar dersom du er 170, dette inkluderer både menn og kvinner. 
-
-
-
-
-
