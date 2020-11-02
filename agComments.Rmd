@@ -1,0 +1,37 @@
+---
+title: "agComments"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup}
+library(tidyverse)
+
+```
+
+1.  Prøv å bruke «pipes» mer. Det kan forenkle koden når en får taket på det.
+
+2.  Dere burde kanskje hatt med noen scatterplots med facets, her er f.eks et der høyde og vekt kombineres til BMI, plottes så mot inntekt for fem «høyde grupper» for hhv. menn og kvinner. I tillegg er age bundet til farge på punktene for å se om alder er av betydning.
+
+```{r}
+# Plotet ser bedre ut i ferdig dokument
+my_data <- modelr::heights
+
+my_data <- my_data %>% 
+  group_by(sex) %>% 
+  mutate(
+    heightIntSex = cut_number(height, n = 5, labels = c("svært lav", "lav", "middels", "høy", "svært høy"))
+  )
+
+my_data %>% 
+  filter(income > 0 & income < 300000) %>%
+  mutate(
+    bmi = (weight * 0.454)/((0.01*height * 2.52)^2)
+    ) %>% 
+  ggplot(mapping = aes(x = bmi, y = income)) +
+  geom_point(mapping = aes(colour = factor(age)), size = 0.7, alpha = 0.3, na.rm = TRUE) + 
+  geom_smooth(method = "lm", colour = "black", lwd = 0.5, na.rm = TRUE) + 
+  facet_grid(heightIntSex ~ sex) + 
+  theme(legend.position = "bottom", strip.text.y = element_text(angle = 0))
+```
